@@ -13,6 +13,11 @@ const fs = require('fs');
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+    puppeteer: { 
+        args: [
+            '--no-sandbox'
+        ]
+    }
     //ffmpegPath: "D:/TI/ffmpeg/bin",
 });
 
