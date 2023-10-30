@@ -5,9 +5,10 @@ const Reactions = require('./reactions');
 const {ContagemRespostas, QuantasRespostas} = require('./contagemRespostas');
 const Lembrete = require('./lembrete');
 const ChatBot = require('./chatBot');
-const AudioParaTexto = require('./audioParaTexto');
-const Zoom = require('./zoom')
-const TextoParaAudio = require('./textoParaAudio');
+require('dotenv').config();
+//const AudioParaTexto = require('./audioParaTexto');
+//const Zoom = require('./zoom')
+//const TextoParaAudio = require('./textoParaAudio');
 const fs = require('fs');
 
 const client = new Client({
@@ -101,7 +102,7 @@ client.on('message',async message => {
                 if(media.hasOwnProperty("mimetype") && media.mimetype == "audio/ogg; codecs=opus"){
                     // is a voice message
                     message.react("🎧");
-                    AudioParaTexto(media, message);
+                    //AudioParaTexto(media, message);
                 }
                 else if(textoMensagem == 'figurinha'){
                     // is an image
@@ -124,7 +125,7 @@ client.on('message',async message => {
                 //console.log("UHUUUUU");
             }
             //await figurinha(chat, message);
-        }else if(textoMensagem == "zoom"){
+        }/*else if(textoMensagem == "zoom"){
             let deltaTime = parseInt((new Date().getTime() - dataInicio.getTime())/1000);
             if(deltaTime < 150){
                 message.reply('Esse comando já foi utilizado nos últimos 2 minutos, por favor aguarde um pouco mais antes de usar novamente.')
@@ -132,7 +133,7 @@ client.on('message',async message => {
                 dataInicio = new Date();
                 Zoom(message);
             }
-        }else if(textoMensagem.includes("cep")){
+        }*/else if(textoMensagem.includes("cep")){
 
             console.log(horario + " - " + nome + " disse: ", textoMensagem);
             if(textoMensagem.length > 4 && textoMensagem.length < 13 ){
@@ -146,7 +147,7 @@ client.on('message',async message => {
             if(textoMensagem.indexOf("audio ") == 0 || textoMensagem.indexOf("áudio ") == 0 && textoMensagem.length > 6){
                 let text = textoMensagem.includes("audio ")?textoMensagem.split("audio ")[1]:textoMensagem.split("áudio ")[1];
                 message.react("🗣️");
-                TextoParaAudio(text, message);
+                //TextoParaAudio(text, message);
                 ContagemRespostas();
             }
 

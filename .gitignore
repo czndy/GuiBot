@@ -3,3 +3,4 @@
 node_modules
 old_chatBot.js
 package-lock.json
+.env
