@@ -11,28 +11,28 @@ require('dotenv').config();
 //const TextoParaAudio = require('./textoParaAudio');
 const fs = require('fs');
 
-//SERVER
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const port = 10000;
+// //SERVER
+// const express = require('express');
+// const cors = require('cors');
+// const app = express();
+// const port = 10000;
 
-app.use(express.json());
-app.use(cors());
+// app.use(express.json());
+// app.use(cors());
 
-app.get('/health', (req, res) => {
-  res.send('Guibot funcionando');
-});
+// app.get('/health', (req, res) => {
+//   res.send('Guibot funcionando');
+// });
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Example app listening on port ${port}`);
+// });
 
 const client = new Client({
     authStrategy: new LocalAuth(),
     ppuppeteer: { 
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
     }
     //ffmpegPath: "D:/TI/ffmpeg/bin",
 });
@@ -42,11 +42,10 @@ const responderMensagens = Respostas();
 let dataInicio = new Date();
 
 const figurinha = async (chat, message, type) => {
-    console.log(message);
+    //console.log(message);
     try {
         const mediaInfo = await message.downloadMedia();
         const data = mediaInfo.data;
-        
 
         if(type == "image"){
             const image = await new MessageMedia("image/jpeg", data, "image.jpg");
