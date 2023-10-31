@@ -30,10 +30,9 @@ app.listen(port, () => {
 
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: { 
-        args: [
-            '--no-sandbox'
-        ]
+    ppuppeteer: { 
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
     //ffmpegPath: "D:/TI/ffmpeg/bin",
 });
