@@ -12,21 +12,21 @@ require('dotenv').config();
 const fs = require('fs');
 
 // //SERVER
-// const express = require('express');
-// const cors = require('cors');
-// const app = express();
-// const port = 10000;
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 10000;
 
-// app.use(express.json());
-// app.use(cors());
+app.use(express.json());
+app.use(cors());
 
-// app.get('/health', (req, res) => {
-//   res.send('Guibot funcionando');
-// });
+app.get('/health', (req, res) => {
+  res.send('Guibot funcionando');
+});
 
-// app.listen(port, () => {
-//     console.log(`Example app listening on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Guibot listening on port ${port}`);
+});
 
 const client = new Client({
     authStrategy: new LocalAuth(),
