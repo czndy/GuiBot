@@ -2,20 +2,26 @@ const ChatBot = async (message, msg) => {
 
     message.react("⚙️");
 
-    const {BingChat} = await import('bing-chat');
+    // const {BingChat} = await import('bing-chat');
+    const {BingChat} = await import('bing-chat-rnz');
     const {oraPromise} = await import('ora');
     
     const api = new BingChat({ cookie: process.env.BING_COOKIE });
 
     const resposta = await oraPromise(api.sendMessage(msg), {
-        text: msg
+        text: msg,
+        //Precise, Balanced, Creative
+        variant: 'Balanced'
     });
     
-    console.log(resposta.text);
+    // const resposta = await api.sendMessage(msg);
 
-    message.reply(resposta);
+    // console.log(resposta);
+    // console.log(resposta.text);
+
+    message.reply(resposta.text);
    
-    return;
+    return resposta;
 };
 
 module.exports = ChatBot;
