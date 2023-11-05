@@ -258,6 +258,9 @@ client.on('message',async message => {
             
             console.log(horario + " - " + nome + " disse: ", textoMensagem);
             if((await message.getChat()).name != "GUIBOT"){
+                //remover próximas 2 linhas depois de consertar o bing-chat em produção
+                message.reply("Desativei temporariamente esse comando por causa de um erro de conexão com Websocket. \nPara ver outros comandos, envie a palavra 'ajuda'");
+                return;
                 ChatBot(message, msg);
             }
             ContagemRespostas();
